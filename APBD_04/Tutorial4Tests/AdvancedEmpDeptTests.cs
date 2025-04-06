@@ -31,12 +31,13 @@ public class AdvancedEmpDeptTests
     [Fact]
     public void ShouldReturnFirstTwoHiredEmployees()
     {
-        var emps = Database.GetEmps();
+         var emps = Database.GetEmps();
 
-        // var firstTwo = null; 
-        //
-        // Assert.Equal(2, firstTwo.Count);
-        // Assert.True(firstTwo[0].HireDate <= firstTwo[1].HireDate);
+        var firstTwo = emps.OrderBy(e => e.HireDate).Take(2).ToList();
+
+        Assert.Equal(2, firstTwo.Count);
+
+        Assert.True(firstTwo[0].HireDate <= firstTwo[1].HireDate);
     }
 
     // 14. DISTINCT job titles
